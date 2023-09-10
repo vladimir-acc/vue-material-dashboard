@@ -1,0 +1,139 @@
+select,
+input[type="tel"],
+input[type="text"],
+input[type="email"],
+textarea {
+  background-color: #eaeaeb;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
+  padding: 12px;
+  border: none;
+}
+
+select:disabled,
+input[type="tel"]:disabled,
+input[type="text"]:disabled,
+input[type="email"]:disabled,
+textarea:disabled {
+  opacity: 0.9;
+  cursor: not-allowed !important;
+}
+
+input[type="radio"]:disabled {
+  color: #96969c !important;
+  opacity: 0.8;
+  cursor: not-allowed !important;
+}
+
+select[name="direction"].selected,
+textarea[name="message"].selected {
+  opacity: 1;
+}
+
+input::placeholder,
+select[name="direction"],
+textarea[name="message"] {
+  opacity: 0.7;
+}
+
+// input::placeholder,
+select:hover,
+input[type="radio"]:hover,
+label:hover {
+  cursor: pointer;
+}
+
+input.inValidName,
+input.inValidPhone,
+input.inValidEmail,
+input.inValidCity,
+input.inValidAge,
+select.inValidDirection,
+select.inValidMessanger,
+select.inValidRegion,
+select.inValidPopulation,
+select.inValidSkill,
+select.inValidTime,
+input[name="name"].nameInValid,
+input[name="phone"].phoneInValid,
+input[name="email"].emailInValid,
+select[name="direction"].dirInValid,
+select[name="messanger"].messangerInValid,
+textarea.msgInValid {
+  border: 1px solid #f57f6c !important;
+  transition: all 0.4s ease;
+}
+
+input.validName,
+input.validPhone,
+input.validEmail,
+input.validCity,
+input.validAge,
+select.validDirection,
+select.validMessanger,
+select.validRegion,
+select.validPopulation,
+select.validSkill,
+select.validTime,
+input[name="name"].nameValid,
+input[name="phone"].phoneValid,
+input[name="email"].emailValid,
+select[name="direction"].dirValid,
+select[name="messanger"].messangerValid,
+textarea.msgValid {
+  border: 1px solid #277602 !important;
+  transition: all 0.4s ease;
+}
+
+.attention,
+.errors {
+  color: #f57f6c !important;
+  font-size: 12px !important;
+  transition: all 0.4s ease;
+}
+
+.btn-close {
+  color: #fcd13f;
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  font-size: 36px;
+  cursor: pointer;
+}
+
+.btn-default:disabled,
+.btn-default:hover:disabled {
+  border: none;
+  background-color: #d0cfcc;
+  color: #ffffff;
+  cursor: not-allowed;
+}
+
+// input::placeholder,
+select>option:disabled {
+  color: #96969c;
+  opacity: 0.6;
+}
+
+.send_suc {
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+  transition: all 0.4s;
+  background-color: #4aaa4a;
+  border-radius: 5px;
+  padding: 8px 5px;
+  margin-bottom: 15px;
+}
+
+.send_err {
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+  transition: all 0.4s;
+  background-color: #f57f6c;
+  border-radius: 5px;
+  padding: 8px 5px;
+  margin-bottom: 15px;
+}

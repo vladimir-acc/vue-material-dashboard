@@ -1,6 +1,10 @@
+<!-- eslint-disable prettier/prettier -->
 <template>
   <div>
-    <md-table v-model="users" @md-selected="onSelect">
+    <md-table
+      v-model="users"
+      @md-selected="onSelect"
+    >
       <md-table-row
         slot="md-table-row"
         slot-scope="{ item }"
@@ -30,15 +34,15 @@ export default {
     return {
       selected: [],
       users: [
-        {
-          name: 'Sign contract for "What are conference organizers afraid of?"',
-        },
-        {
-          name: "Lines From Great Russian Literature? Or E-mails From My Boss?",
-        },
-        {
-          name: "Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit",
-        },
+        // {
+        //   name: 'Sign contract for "What are conference organizers afraid of?"',
+        // },
+        // {
+        //   name: "Lines From Great Russian Literature? Or E-mails From My Boss?",
+        // },
+        // {
+        //   name: "Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit",
+        // },
       ],
     };
   },

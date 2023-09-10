@@ -4,7 +4,10 @@
       class="card-chart"
       :data-background-color="dataBackgroundColor"
     >
-      <div :id="chartId" class="ct-chart"></div>
+      <div
+        :id="chartId"
+        class="ct-chart"
+      ></div>
     </md-card-header>
 
     <md-card-content>

@@ -1,23 +1,31 @@
+<!-- eslint-disable prettier/prettier -->
 <template>
   <div class="content">
     <div class="md-layout">
-      <div class="md-layout-item md-medium-size-100 md-size-66">
-        <edit-profile-form data-background-color="green"> </edit-profile-form>
-      </div>
-      <div class="md-layout-item md-medium-size-100 md-size-33">
-        <user-card> </user-card>
+      <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100">
+        <md-card>
+          <md-card-header data-background-color="blue">
+            <h4 class="title">Список пользователей</h4>
+          </md-card-header>
+          <md-card-content>
+            <List />
+          </md-card-content>
+        </md-card>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { EditProfileForm, UserCard } from "@/pages";
+import List from "@/components/Users/List.vue";
+
 
 export default {
   components: {
-    EditProfileForm,
-    UserCard,
+    List
+  },
+  data() {
+    return {};
   },
 };
 </script>

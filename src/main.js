@@ -1,25 +1,15 @@
-// =========================================================
-// * Vue Material Dashboard - v1.5.1
-// =========================================================
-//
-// * Product Page: https://www.creative-tim.com/product/vue-material-dashboard
-// * Copyright 2023 Creative Tim (https://www.creative-tim.com)
-// * Licensed under MIT (https://github.com/creativetimofficial/vue-material-dashboard/blob/master/LICENSE.md)
-//
-// * Coded by Creative Tim
-//
-// =========================================================
-//
-// * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+/* eslint-disable prettier/prettier */
 
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from "vue";
+
 import VueRouter from "vue-router";
 import App from "./App";
 
 // router setup
 import routes from "./routes/routes";
+import auth from "@/middleware/auth.js";
+import role from "@/middleware/role.js";
+
 
 // Plugins
 import GlobalComponents from "./globalComponents";
@@ -53,4 +43,16 @@ new Vue({
   data: {
     Chartist: Chartist,
   },
+});
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((record) => record.meta.requiresAuth)) { // middleware auth
+    auth(to, from, next);
+    if (to.matched.some((record) => record.meta.requireAdmin)) { // middleware role
+      role(to, from, next);
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
 });

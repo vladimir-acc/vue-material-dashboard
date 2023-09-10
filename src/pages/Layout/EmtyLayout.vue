@@ -1,15 +1,19 @@
-<!-- eslint-disable vue/multi-word-component-names -->
-<!-- eslint-disable prettier/prettier -->
 <template>
+  <!-- /* eslint-disable-next-line prettier/prettier */ -->
   <transition
     name="fade"
     mode="out-in"
   >
-    <router-view></router-view>
+    <login></login>
   </transition>
 </template>
 <script>
-export default {};
+import login from '../../pages/Login.vue';
+
+export default {
+  components: { login }
+
+}
 </script>
 <style>
 .fade-enter-active,

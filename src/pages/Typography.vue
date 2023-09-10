@@ -1,9 +1,10 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="content">
     <div class="md-layout">
       <div class="md-layout-item">
         <md-card>
-          <md-card-header data-background-color="green">
+          <md-card-header data-background-color="blue">
             <h4 class="title">Material Dashboard Heading</h4>
             <p class="category">Created using Roboto Font Family</p>
           </md-card-header>

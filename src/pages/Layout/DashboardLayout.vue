@@ -1,5 +1,9 @@
+<!-- eslint-disable prettier/prettier -->
 <template>
-  <div class="wrapper" :class="{ 'nav-open': $sidebar.showSidebar }">
+  <div
+    class="wrapper"
+    :class="{ 'nav-open': $sidebar.showSidebar }"
+  >
     <notifications></notifications>
 
     <side-bar
@@ -13,11 +17,15 @@
       </sidebar-link>
       <sidebar-link to="/user">
         <md-icon>person</md-icon>
-        <p>User Profile</p>
+        <p>Пользователи</p>
       </sidebar-link>
       <sidebar-link to="/table">
         <md-icon>content_paste</md-icon>
         <p>Table list</p>
+      </sidebar-link>
+      <sidebar-link to="/camp">
+        <md-icon>content_paste</md-icon>
+        <p>Camp</p>
       </sidebar-link>
       <sidebar-link to="/typography">
         <md-icon>library_books</md-icon>
@@ -35,10 +43,13 @@
         <md-icon>notifications</md-icon>
         <p>Notifications</p>
       </sidebar-link>
-      <sidebar-link to="/upgrade" class="active-pro">
+      <!-- <sidebar-link
+        to="/upgrade"
+        class="active-pro"
+      >
         <md-icon>unarchive</md-icon>
         <p>Upgrade to PRO</p>
-      </sidebar-link>
+      </sidebar-link> -->
     </side-bar>
 
     <div class="main-panel">
@@ -65,6 +76,7 @@ import MobileMenu from "@/pages/Layout/MobileMenu.vue";
 import FixedPlugin from "./Extra/FixedPlugin.vue";
 
 export default {
+  middleware: "authenticated",
   components: {
     TopNavbar,
     DashboardContent,
@@ -74,9 +86,18 @@ export default {
   },
   data() {
     return {
-      sidebarBackground: "green",
-      sidebarBackgroundImage: require("@/assets/img/sidebar-2.jpg"),
+      sidebarBackground: "blue",
+      sidebarBackgroundImage: require("@/assets/img/julia-w.webp"),
+      userToken: "",
+      data: "",
+      role: "",
+      id: "",
     };
   },
 };
 </script>
+<!-- <style lang="scss" scoped>
+.dropdown .show-dropdown {
+  display: none !important;
+}
+</style> -->

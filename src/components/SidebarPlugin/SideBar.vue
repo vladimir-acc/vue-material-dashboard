@@ -1,3 +1,4 @@
+<!-- eslint-disable prettier/prettier -->
 <template>
   <div
     class="sidebar"
@@ -6,15 +7,20 @@
     :style="sidebarStyle"
   >
     <div class="logo">
-      <a href="#" class="simple-text logo-mini">
+      <a
+        href="#"
+        class="simple-text logo-mini"
+      >
         <div class="logo-img">
-          <img :src="imgLogo" alt="" />
+          <img
+            :src="imgLogo"
+            alt=""
+          />
         </div>
       </a>
 
       <a
-        href="https://www.creative-tim.com/product/vue-material-dashboard"
-        target="_blank"
+        href="/dashboard"
         class="simple-text logo-normal"
       >
         {{ title }}
@@ -47,7 +53,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: "Vue MD",
+      default: "ADMIN",
     },
     sidebarBackgroundImage: {
       type: String,
@@ -55,11 +61,11 @@ export default {
     },
     imgLogo: {
       type: String,
-      default: require("@/assets/img/vue-logo.png"),
+      default: require("@/assets/img/logo.webp"),
     },
     sidebarItemColor: {
       type: String,
-      default: "green",
+      default: "blue",
       validator: (value) => {
         let acceptedValues = ["", "purple", "blue", "green", "orange", "red"];
         return acceptedValues.indexOf(value) !== -1;

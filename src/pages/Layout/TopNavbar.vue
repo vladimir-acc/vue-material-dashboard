@@ -1,5 +1,11 @@
+<!-- eslint-disable prettier/prettier -->
+<!-- eslint-disable prettier/prettier -->
 <template>
-  <md-toolbar md-elevation="0" class="md-transparent">
+  <md-toolbar
+    md-elevation="0"
+    class="md-transparent"
+    style="z-index: 1;"
+  >
     <div class="md-toolbar-row">
       <div class="md-toolbar-section-start">
         <h3 class="md-title">{{ $route.name }}</h3>
@@ -30,24 +36,6 @@
               <i class="material-icons">dashboard</i>
               <p class="hidden-lg hidden-md">Dashboard</p>
             </md-list-item>
-
-            <!-- <md-list-item href="#/notifications" class="dropdown">
-              <drop-down>
-                <a slot="title" class="dropdown-toggle" data-toggle="dropdown">
-                  <i class="material-icons">notifications</i>
-                  <span class="notification">5</span>
-                  <p class="hidden-lg hidden-md">Notifications</p>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-right">
-                  <li><a href="#">Mike John responded to your email</a></li>
-                  <li><a href="#">You have 5 new tasks</a></li>
-                  <li><a href="#">You're now friend with Andrew</a></li>
-                  <li><a href="#">Another Notification</a></li>
-                  <li><a href="#">Another One</a></li>
-                </ul>
-              </drop-down>
-            </md-list-item> -->
-
             <li class="md-list-item">
               <a
                 href="#/notifications"
@@ -80,6 +68,13 @@
               <i class="material-icons">person</i>
               <p class="hidden-lg hidden-md">Profile</p>
             </md-list-item>
+            <md-list-item
+              href="#"
+              @click.prevent="logout()"
+            >
+              <i class="material-icons">logout</i>
+              <p class="hidden-lg hidden-md">Profile</p>
+            </md-list-item>
           </md-list>
         </div>
       </div>
@@ -108,8 +103,29 @@ export default {
     toggleSidebar() {
       this.$sidebar.displaySidebar(!this.$sidebar.showSidebar);
     },
+    logout() {
+      const id = { userId: 3 };
+      this.postData(`http://localhost:3003/users/logout/`, id).then((data) => {
+        document.cookie = `accessToken=${data.accessToken}; expires=${new Date(
+          Date.now()
+        )}`;
+        localStorage.setItem("userRole", "");
+        this.$router.push("/login");
+      });
+    },
+    async postData(url, data) {
+      const response = await fetch(url, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      return response.json();
+    },
   },
 };
 </script>
 
-<style lang="css"></style>
+<style lang="css">
+</style>
