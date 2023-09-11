@@ -135,4 +135,12 @@ export default {
 .z-100 {
   z-index: 100;
 }
+.md-table-cell {
+  padding: 0;
+  height: 32px;
+}
+.md-button.md-fab,
+.md-button.md-just-icon {
+  max-height: 28px;
+}
 </style>

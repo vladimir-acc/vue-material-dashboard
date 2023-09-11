@@ -15,7 +15,7 @@
         <md-icon>dashboard</md-icon>
         <p>Dashboard</p>
       </sidebar-link>
-      <sidebar-link to="/user">
+      <sidebar-link to="/users">
         <md-icon>person</md-icon>
         <p>Пользователи</p>
       </sidebar-link>
@@ -96,8 +96,8 @@ export default {
   },
 };
 </script>
-<!-- <style lang="scss" scoped>
-.dropdown .show-dropdown {
-  display: none !important;
+<style lang="scss">
+.fixed-plugin .dropdown {
+  display: none;
 }
-</style> -->
+</style>

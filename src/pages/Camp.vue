@@ -5,34 +5,11 @@
       <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100">
         <md-card>
           <md-card-header data-background-color="blue">
-            <h4 class="title">Simple Table</h4>
-            <p class="category">Here is a subtitle for this table</p>
+            <h4 class="title">CAMP</h4>
+            <p class="category">Категорія 1 рівня</p>
           </md-card-header>
           <md-card-content>
-            <simple-table table-header-color="blue"></simple-table>
-          </md-card-content>
-        </md-card>
-      </div>
-
-      <!-- <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100">
-        <md-card class="md-card-plain">
-          <md-card-header data-background-color="blue">
-            <h4 class="title">Table on Plain Background</h4>
-            <p class="category">Here is a subtitle for this table</p>
-          </md-card-header>
-          <md-card-content>
-            <ordered-table></ordered-table>
-          </md-card-content>
-        </md-card>
-      </div> -->
-      <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100">
-        <md-card class="md-card-plain">
-          <md-card-header data-background-color="blue">
-            <h4 class="title">Table</h4>
-            <p class="category">Here is a subtitle for this table</p>
-          </md-card-header>
-          <md-card-content>
-            <nav-tabs-table></nav-tabs-table>
+            <list table-header-color="blue"></list>
           </md-card-content>
         </md-card>
       </div>
@@ -42,13 +19,18 @@
 </template>
 
 <script>
-import { SimpleTable, OrderedTable, NavTabsTable } from "@/components";
+import list from "@/components/Camp/List.vue";
 
 export default {
   components: {
-    // OrderedTable,
-    SimpleTable,
-    NavTabsTable,
+    list
   },
 };
 </script>
+
+<style scoped>
+.md-card .md-card-header .title,
+.md-card .md-card-header .category {
+  color: white;
+}
+</style>

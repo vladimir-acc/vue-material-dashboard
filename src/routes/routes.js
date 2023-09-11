@@ -26,7 +26,7 @@ const routes = [
         },
       },
       {
-        path: "user",
+        path: "users",
         name: "Пользователи",
         component: UserProfile,
         meta: {
@@ -44,7 +44,7 @@ const routes = [
       },
       {
         path: "camp",
-        name: "Camp List",
+        name: "Camp",
         component: Camp,
         meta: {
           requiresAuth: true,
