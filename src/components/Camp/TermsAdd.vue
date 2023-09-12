@@ -26,7 +26,7 @@
         <div class="md-layout">
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
-              <label>Заголовок*</label>
+              <label class="required">Заголовок*</label>
               <md-input
                 v-model="subtitle"
                 type="text"
@@ -160,5 +160,8 @@ export default {
 .flex {
   display: flex;
   justify-content: space-between;
+}
+.md-field label.required {
+  color: #e49393 !important;
 }
 </style>

@@ -27,7 +27,7 @@
         <div class="md-layout">
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
-              <label>Заголовок*</label>
+              <label class="required">Заголовок*</label>
               <md-input
                 v-model="subtitle"
                 type="text"
@@ -118,7 +118,7 @@ export default {
         sortId: this.sortId,
       };
 
-      if (!data.campId || !data.subtitle) {
+      if (!data.id || !data.subtitle) {
         alert("Не заповнено Заголовок*");
         return;
       }
@@ -161,5 +161,8 @@ export default {
 .flex {
   display: flex;
   justify-content: space-between;
+}
+.md-field label.required {
+  color: #e49393 !important;
 }
 </style>
