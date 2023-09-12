@@ -1,7 +1,11 @@
 <!-- eslint-disable prettier/prettier -->
+<!-- eslint-disable prettier/prettier -->
 <template>
   <div>
-
+    <CampEdit
+      ref="campEdit"
+      @campedit="fetchCamp"
+    />
     <md-table
       v-model="camp"
       @md-selected="onSelect"
@@ -11,14 +15,17 @@
         slot-scope="{ item }"
         md-selectable="single"
         :class="getClass(selected?selected:item)"
-        @click="getTerms({campId:item.id})"
+        @click="getTerms({campId:item.id}); getId(item.id)"
       >
         <md-table-cell md-label="ID">{{ item.id }}</md-table-cell>
         <md-table-cell md-label="Заголовок">{{ item.title }}</md-table-cell>
         <md-table-cell md-label="Посилання">{{ item.link }}</md-table-cell>
         <md-table-cell md-label="Ціна">{{ item.price }}</md-table-cell>
-        <md-table-cell>
-          <md-button class="md-just-icon md-simple md-primary">
+        <md-table-cell md-label="Подія">
+          <md-button
+            class="md-just-icon md-simple md-primary"
+            @click="openFormEdit(item.id, item.title, item.link, item.price)"
+          >
             <md-icon>edit</md-icon>
             <md-tooltip md-direction="top">Редагування</md-tooltip>
           </md-button>
@@ -42,13 +49,13 @@
 </template>
 
 <script>
-
 import api from "../../../config/config.js";
 import Terms from "@/components/Camp/Terms.vue";
+import CampEdit from "@/components/Camp/CampEdit.vue";
 
 export default {
   name: "Terms-table",
-  components: { Terms, },
+  components: { Terms, CampEdit },
 
   data() {
     return {
@@ -58,9 +65,11 @@ export default {
   },
   methods: {
     async fetchCamp() {
-      await this.postData(`http://${api.host}:${api.port}/camp/read/`).then((data) => {
-        this.camp = data;
-      });
+      await this.postData(`http://${api.host}:${api.port}/camp/read/`).then(
+        (data) => {
+          this.camp = data;
+        }
+      );
     },
     async postData(url) {
       const response = await fetch(url, {
@@ -80,12 +89,9 @@ export default {
         );
       }
     },
-    openFormAdd() {
-      // this.refs('editForm').show();
-      this.$refs.addForm.show();
-    },
-    openFormEdit(id, login, email, role, actived) {
-      this.$refs.editForm.show(id, login, email, role, actived);
+
+    openFormEdit(id, title, link, price) {
+      this.$refs.campEdit.show(id, title, link, price);
     },
     closeForm() {
       this.isVisible = false;
@@ -93,18 +99,21 @@ export default {
     getClass: ({ id }) => ({
       // 'md-primary': id === 2,
       // 'md-accent': id > 0
-      'md-default': id > 0
+      "md-default": id > 0,
     }),
     onSelect(item) {
       this.selected = item;
-      console.log(item);
+      // this.$emit("selected", this.selected.id);
     },
     getTerms(id) {
       this.$refs.campTerms.fetchTerms(id);
     },
+    getId(id) {
+      this.$refs.campTerms.getId(id);
+    },
   },
   mounted() {
-    this.onSelect(this.selected);
+    // this.onSelect(this.selected);
     this.fetchCamp();
   },
 };

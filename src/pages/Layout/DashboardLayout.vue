@@ -19,15 +19,15 @@
         <md-icon>person</md-icon>
         <p>Пользователи</p>
       </sidebar-link>
-      <sidebar-link to="/table">
+      <!-- <sidebar-link to="/table">
         <md-icon>content_paste</md-icon>
         <p>Table list</p>
-      </sidebar-link>
+      </sidebar-link> -->
       <sidebar-link to="/camp">
         <md-icon>content_paste</md-icon>
         <p>Camp</p>
       </sidebar-link>
-      <sidebar-link to="/typography">
+      <!-- <sidebar-link to="/typography">
         <md-icon>library_books</md-icon>
         <p>Typography</p>
       </sidebar-link>
@@ -42,7 +42,7 @@
       <sidebar-link to="/notifications">
         <md-icon>notifications</md-icon>
         <p>Notifications</p>
-      </sidebar-link>
+      </sidebar-link> -->
       <!-- <sidebar-link
         to="/upgrade"
         class="active-pro"

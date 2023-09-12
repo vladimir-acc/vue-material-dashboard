@@ -25,9 +25,9 @@
 
       <md-card-content>
         <div class="md-layout">
-          <div class="md-layout-item md-small-size-100 md-size-100">
+          <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
-              <label>subtitle</label>
+              <label>Заголовок*</label>
               <md-input
                 v-model="subtitle"
                 type="text"
@@ -36,7 +36,7 @@
           </div>
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
-              <label>period</label>
+              <label>Період</label>
               <md-input
                 v-model="period"
                 type="text"
@@ -45,7 +45,7 @@
           </div>
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
-              <label>other</label>
+              <label>Термін</label>
               <md-input
                 v-model="other"
                 type="text"
@@ -54,7 +54,7 @@
           </div>
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
-              <label>sortId</label>
+              <label>Порядок сортування</label>
               <md-input
                 v-model="sortId"
                 type="number"
@@ -91,16 +91,18 @@ export default {
       subtitle: "",
       period: "",
       other: "",
-      sortId: null,
+      sortId: 1,
+      campId: "",
     };
   },
   methods: {
-    show(id, subtitle, period, other, sortId) {
+    show(id, subtitle, period, other, sortId, campId) {
       this.id = id;
       this.subtitle = subtitle;
       this.period = period;
       this.other = other;
       this.sortId = sortId;
+      this.campId = campId;
 
       this.isVisible = true;
     },
@@ -116,7 +118,10 @@ export default {
         sortId: this.sortId,
       };
 
-      if (!data.id) return;
+      if (!data.campId || !data.subtitle) {
+        alert("Не заповнено Заголовок*");
+        return;
+      }
       const result = await fetch(
         `http://${api.host}:${api.port}/camp_terms/update/${this.id}`,
         {
@@ -136,13 +141,19 @@ export default {
       if (result.err) alert(result.err);
       else {
         this.hide();
-        this.$emit("edit");
+        this.$emit("edit", this.campId);
       }
     },
   },
 };
 </script>
 <style>
+@media (min-width: 315px) and (max-width: 767px) {
+  .form-modal {
+    left: 0 !important;
+    max-width: 100%;
+  }
+}
 .form-modal {
   max-width: 750px;
   left: calc(50vw - 280px);

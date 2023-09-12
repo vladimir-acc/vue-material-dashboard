@@ -32,11 +32,11 @@
             </md-autocomplete>
           </div>
           <md-list>
-            <md-list-item href="#/">
+            <!-- <md-list-item href="#/">
               <i class="material-icons">dashboard</i>
               <p class="hidden-lg hidden-md">Dashboard</p>
-            </md-list-item>
-            <li class="md-list-item">
+            </md-list-item> -->
+            <!-- <li class="md-list-item">
               <a
                 href="#/notifications"
                 class="md-list-item-router md-list-item-container md-button-clean dropdown"
@@ -62,9 +62,9 @@
                   </drop-down>
                 </div>
               </a>
-            </li>
+            </li> -->
 
-            <md-list-item href="#/user">
+            <md-list-item href="#/users">
               <i class="material-icons">person</i>
               <p class="hidden-lg hidden-md">Profile</p>
             </md-list-item>
@@ -88,14 +88,14 @@ export default {
     return {
       selectedEmployee: null,
       employees: [
-        "Jim Halpert",
-        "Dwight Schrute",
-        "Michael Scott",
-        "Pam Beesly",
-        "Angela Martin",
-        "Kelly Kapoor",
-        "Ryan Howard",
-        "Kevin Malone",
+        // "Jim Halpert",
+        // "Dwight Schrute",
+        // "Michael Scott",
+        // "Pam Beesly",
+        // "Angela Martin",
+        // "Kelly Kapoor",
+        // "Ryan Howard",
+        // "Kevin Malone",
       ],
     };
   },
