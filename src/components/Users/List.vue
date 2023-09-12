@@ -18,14 +18,14 @@
         @register="fetchUsers"
       />
     </div>
-    <div style="display: flex; justify-content: end;">
+    <!-- <div style="display: flex; justify-content: end;">
       <md-button
         class="md-just-icon  md-icon-button md-success"
         @click="openFormAdd()"
       >
         <md-icon>add</md-icon>
       </md-button>
-    </div>
+    </div> -->
     <md-table
       v-model="users"
       :table-header-color="tableHeaderColor"
@@ -66,6 +66,10 @@
         </md-table-cell>
       </md-table-row>
     </md-table>
+    <md-button
+      class="md-dense md-raised md-custom"
+      @click="openFormAdd()"
+    >Додати</md-button>
   </div>
 </template>
 
@@ -142,5 +146,12 @@ export default {
 .md-button.md-fab,
 .md-button.md-just-icon {
   max-height: 28px;
+}
+.md-custom {
+  background-color: #26c6da !important;
+  margin-left: calc(100% - 140px);
+}
+.md-custom:hover {
+  background-color: #27a7b8 !important;
 }
 </style>

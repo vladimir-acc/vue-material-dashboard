@@ -26,7 +26,7 @@
         <div class="md-layout">
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
-              <label>Login</label>
+              <label>Login*</label>
               <md-input
                 v-model="login"
                 type="text"
@@ -35,7 +35,7 @@
           </div>
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
-              <label>Password</label>
+              <label>Password*</label>
               <md-input
                 v-model="password"
                 type="password"
@@ -44,7 +44,7 @@
           </div>
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
-              <label>Email</label>
+              <label>Email*</label>
               <md-input
                 v-model="email"
                 type="email"
@@ -54,7 +54,7 @@
 
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
-              <label for="role">Role</label>
+              <label for="role">Role*</label>
               <md-select
                 v-model="role"
                 name="role"
@@ -73,7 +73,7 @@
             <md-button
               class="md-raised md-success"
               @click="register()"
-            >Добавить</md-button>
+            >Зберегти</md-button>
           </div>
         </div>
       </md-card-content>
