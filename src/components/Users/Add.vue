@@ -96,7 +96,7 @@ export default {
       login: null,
       email: null,
       password: null,
-      role: 'USER',
+      role: "USER",
       actived: false,
     };
   },
@@ -115,21 +115,28 @@ export default {
         role: this.role,
         actived: this.actived,
       };
-      const result = await fetch(`http://${api.host}:${api.port}/users/register/`, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+      const result = await fetch(
+        `http://${api.host}:${api.port}/users/register/`,
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
         .then((res) => {
-
           return res.json();
         })
         .catch((err) => {
           console.dir(err);
         });
-      if (result.err) alert(result.err == 'Data not complet' ? 'Заповніть усі необхідні поля' : result.err);
+      if (result.err)
+        alert(
+          result.err == "Data not complet"
+            ? "Заповніть усі необхідні поля"
+            : result.err
+        );
       else {
         this.hide();
         this.$emit("register");

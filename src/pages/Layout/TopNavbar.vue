@@ -109,7 +109,8 @@ export default {
         document.cookie = `accessToken=${data.accessToken}; expires=${new Date(
           Date.now()
         )}`;
-        localStorage.setItem("userRole", "");
+        // localStorage.setItem("userRole", "");
+        localStorage.clear();
         this.$router.push("/login");
       });
     },

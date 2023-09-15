@@ -1,3 +1,4 @@
+<!-- eslint-disable prettier/prettier -->
 <!-- eslint-disable vue/multi-word-component-names -->
 <!-- eslint-disable prettier/prettier -->
 <template>
@@ -53,9 +54,10 @@ export default {
       this.postData(`http://${api.host}:${api.port}/users/auth/`, data).then(
         (data) => {
           if (data.accessToken) {
-            document.cookie = `accessToken=${data.accessToken}; expires=${60 * 60
-              }`;
+            document.cookie = `accessToken=${data.accessToken
+              }; expires=${3600}`;
             localStorage.setItem("userRole", data.user.role);
+            localStorage.setItem("accessToken", data.accessToken);
             this.$router.push("/dashboard");
           } else {
             if (data.message === "login Not Found")

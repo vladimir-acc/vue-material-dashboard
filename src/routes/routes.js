@@ -19,7 +19,7 @@ const routes = [
     children: [
       {
         path: "dashboard",
-        name: "Dashboard",
+        name: "Дашборд",
         component: Dashboard,
         meta: {
           requiresAuth: true,

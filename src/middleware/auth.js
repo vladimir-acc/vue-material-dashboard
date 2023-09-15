@@ -1,6 +1,5 @@
 const authenticated = (to, from, next) => {
   const role = localStorage.getItem("userRole");
-  console.log('role: ', role);
   let accessToken = document.cookie;
   // console.log(accessToken);
   if (accessToken && role) {
