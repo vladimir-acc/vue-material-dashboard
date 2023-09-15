@@ -26,6 +26,7 @@
     "@vue/cli-service": "4.5.19",
     "@vue/eslint-config-prettier": "7.0.0",
     "babel-eslint": "10.1.0",
+    "dotenv": "^16.3.1",
     "es6-promise": "4.2.8",
     "eslint": "7.32.0",
     "eslint-plugin-prettier": "4.2.1",
