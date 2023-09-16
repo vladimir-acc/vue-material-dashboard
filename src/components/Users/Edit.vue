@@ -146,7 +146,7 @@ export default {
           return res.json();
         })
         .catch((err) => {
-          console.dir(err);
+          alert(err);
         });
       if (result.err) alert(result.err);
       else {

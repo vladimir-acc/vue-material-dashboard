@@ -38,6 +38,7 @@
 </template>
 
 <script>
+
 import api from "../../config/config.js";
 
 export default {

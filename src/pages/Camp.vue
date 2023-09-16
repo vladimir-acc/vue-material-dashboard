@@ -23,7 +23,7 @@ import list from "@/components/Camp/List.vue";
 
 export default {
   components: {
-    list
+    list,
   },
 };
 </script>

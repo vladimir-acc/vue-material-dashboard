@@ -83,6 +83,7 @@
 </template>
 
 <script>
+import api from "../../../config/config.js";
 export default {
   data() {
     return {
@@ -105,14 +106,15 @@ export default {
     },
     logout() {
       const id = { userId: 3 };
-      this.postData(`http://localhost:3003/users/logout/`, id).then((data) => {
-        document.cookie = `accessToken=${data.accessToken}; expires=${new Date(
-          Date.now()
-        )}`;
-        // localStorage.setItem("userRole", "");
-        localStorage.clear();
-        this.$router.push("/login");
-      });
+      this.postData(`http://${api.host}:${api.port}/users/logout/`, id).then(
+        (data) => {
+          document.cookie = `accessToken=${data.accessToken
+            }; expires=${new Date(Date.now())}`;
+          // localStorage.setItem("userRole", "");
+          localStorage.clear();
+          this.$router.push("/login");
+        }
+      );
     },
     async postData(url, data) {
       const response = await fetch(url, {
@@ -128,5 +130,4 @@ export default {
 };
 </script>
 
-<style lang="css">
-</style>
+<style lang="css"></style>
