@@ -80,7 +80,8 @@ import Add from "@/components/Users/Add.vue";
 export default {
   name: "user-list",
   components: {
-    Edit, Add,
+    Edit,
+    Add,
   },
   props: {
     tableHeaderColor: {
@@ -97,9 +98,11 @@ export default {
   },
   methods: {
     async fetchUsers() {
-      await this.postData(`http://${api.host}:${api.port}/users/read/`).then((data) => {
-        this.users = data;
-      });
+      await this.postData(`http://${api.host}:${api.port}/users/read/`).then(
+        (data) => {
+          this.users = data;
+        }
+      );
     },
     async postData(url) {
       const response = await fetch(url, {

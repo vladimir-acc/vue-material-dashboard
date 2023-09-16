@@ -50,6 +50,11 @@
         <md-icon>unarchive</md-icon>
         <p>Upgrade to PRO</p>
       </sidebar-link> -->
+      <hr style="width: 85%;">
+      <sidebar-link to="/logout">
+        <md-icon>logout</md-icon>
+        <p>Вмхід</p>
+      </sidebar-link>
     </side-bar>
 
     <div class="main-panel">

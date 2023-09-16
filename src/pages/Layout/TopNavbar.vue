@@ -108,9 +108,9 @@ export default {
       const id = { userId: 3 };
       this.postData(`http://${api.host}:${api.port}/users/logout/`, id).then(
         (data) => {
+          // eslint-disable-next-line prettier/prettier
           document.cookie = `accessToken=${data.accessToken
             }; expires=${new Date(Date.now())}`;
-          // localStorage.setItem("userRole", "");
           localStorage.clear();
           this.$router.push("/login");
         }
