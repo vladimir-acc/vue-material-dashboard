@@ -17,12 +17,12 @@
       </sidebar-link>
       <sidebar-link to="/users">
         <md-icon>person</md-icon>
-        <p>Пользователи</p>
+        <p>Користувачи</p>
       </sidebar-link>
-      <!-- <sidebar-link to="/table">
-        <md-icon>content_paste</md-icon>
-        <p>Table list</p>
-      </sidebar-link> -->
+      <sidebar-link to="/contacts">
+        <md-icon>room</md-icon>
+        <p>Контакти</p>
+      </sidebar-link>
       <sidebar-link to="/camp">
         <md-icon>content_paste</md-icon>
         <p>Camp</p>

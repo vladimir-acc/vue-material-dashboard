@@ -37,31 +37,31 @@
         <md-table-cell md-label="id">{{ item.id}}</md-table-cell>
         <md-table-cell md-label="Login">{{ item.login}}</md-table-cell>
         <md-table-cell md-label="Email">{{ item.email }}</md-table-cell>
-        <md-table-cell md-label="Actived">
+        <md-table-cell md-label="Активован">
           <input
             type="checkbox"
             :checked="item.actived"
             disabled
           >
         </md-table-cell>
-        <md-table-cell md-label="Role">{{ item.role }}</md-table-cell>
+        <md-table-cell md-label="Роль">{{ item.role }}</md-table-cell>
         <md-table-cell
           class="md-size-10"
-          md-label="Action"
+          md-label="Подія"
         >
           <md-button
             class="md-just-icon md-simple md-primary"
             @click="openFormEdit(item.id,item.login, item.email,item.role,item.actived)"
           >
             <md-icon>edit</md-icon>
-            <md-tooltip md-direction="top">Edit</md-tooltip>
+            <md-tooltip md-direction="top">Редагувати</md-tooltip>
           </md-button>
           <md-button
             class="md-just-icon md-simple md-danger"
             @click="onDelete(item.id, item.login)"
           >
             <md-icon>delete</md-icon>
-            <md-tooltip md-direction="top">Delete</md-tooltip>
+            <md-tooltip md-direction="top">Видалити</md-tooltip>
           </md-button>
         </md-table-cell>
       </md-table-row>
@@ -111,7 +111,7 @@ export default {
       return response.json();
     },
     async onDelete(id, login) {
-      if (window.confirm(`Подтвердите удаление пользователя - ${login}`)) {
+      if (window.confirm(`Підтвердіть видалення користувача - ${login}`)) {
         await fetch(`http://${api.host}:${api.port}/users/delete/${id}`, {
           method: "DELETE",
         });

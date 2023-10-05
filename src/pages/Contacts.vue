@@ -5,27 +5,29 @@
       <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100">
         <md-card>
           <md-card-header data-background-color="blue">
-            <h4 class="title">Перелік користувачів</h4>
+            <h4 class="title">Контакти</h4>
           </md-card-header>
           <md-card-content>
-            <List />
+            <ContactList table-header-color="blue" />
           </md-card-content>
         </md-card>
       </div>
     </div>
   </div>
 </template>
-
 <script>
-import List from "@/components/Users/List.vue";
-
+import ContactList from "@/components/Contacts/ContactList.vue";
 
 export default {
   components: {
-    List
-  },
-  data() {
-    return {};
+    ContactList,
   },
 };
 </script>
+
+<style scoped>
+.md-card .md-card-header .title,
+.md-card .md-card-header .category {
+  color: white;
+}
+</style>

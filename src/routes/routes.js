@@ -3,6 +3,7 @@ import EmptyLayout from "@/pages/Layout/EmtyLayout.vue";
 
 import Login from "@/pages/Login.vue";
 import Camp from "@/pages/Camp.vue";
+import Contacts from "@/pages/Contacts.vue";
 import Dashboard from "@/pages/Dashboard.vue";
 import UserProfile from "@/pages/UserProfile.vue";
 import TableList from "@/pages/TableList.vue";
@@ -27,7 +28,7 @@ const routes = [
       },
       {
         path: "users",
-        name: "Пользователи",
+        name: "Користувачи",
         component: UserProfile,
         meta: {
           requiresAuth: true,
@@ -46,6 +47,14 @@ const routes = [
         path: "camp",
         name: "Camp",
         component: Camp,
+        meta: {
+          requiresAuth: true,
+        },
+      },
+      {
+        path: "contacts",
+        name: "Контакти",
+        component: Contacts,
         meta: {
           requiresAuth: true,
         },

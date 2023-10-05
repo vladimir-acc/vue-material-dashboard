@@ -58,7 +58,7 @@ export default {
       return response.json();
     },
     async onDelete(id, login) {
-      if (window.confirm(`Подтвердите удаление пользователя - ${login}`)) {
+      if (window.confirm(`Підтвердіть видалення коистувача - ${login}`)) {
         await fetch(`http://${api.host}:${api.port}/users/delete/${id}`, {
           method: "DELETE",
         });
