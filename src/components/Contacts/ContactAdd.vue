@@ -130,7 +130,7 @@ export default {
       const result = await fetch(
         `http://${api.host}:${api.port}/contact/create/`,
         {
-          method: "INSERT",
+          method: "POST",
           body: JSON.stringify(data),
           headers: {
             "Content-Type": "application/json",
