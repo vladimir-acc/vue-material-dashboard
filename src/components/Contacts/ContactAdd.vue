@@ -147,6 +147,10 @@ export default {
       else {
         this.hide();
         this.$emit("create");
+        this.title = "";
+        this.address = "";
+        this.email = "";
+        this.phone = "";
       }
     },
   },
