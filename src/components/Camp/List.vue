@@ -78,7 +78,7 @@ export default {
       return response.json();
     },
     async onDelete(id, login) {
-      if (window.confirm(`Подтвердите удаление пользователя - ${login}`)) {
+      if (window.confirm(`Підтвердіть видалення користувача - ${login}`)) {
         await fetch(`http://${api.host}:${api.port}/camp/delete/${id}`, {
           method: "DELETE",
         });
