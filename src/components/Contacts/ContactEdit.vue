@@ -57,7 +57,11 @@
               <label>phone</label>
               <md-input
                 v-model="phone"
-                type="phone"
+                type="tel"
+                v-mask="'+38 (0##) ### ## ##'"
+                placeholder="+38 (0XX) XXX XX XX"
+                minlength="19"
+                maxlength="19"
               >{{ phone }}</md-input>
             </md-field>
           </div>
@@ -150,7 +154,8 @@ export default {
         .catch((err) => {
           alert(err);
         });
-      if (result.err) alert(result.err);
+      if (result.err || result.message === "Email not valid")
+        alert(result.err ? result.err : result.message);
       else {
         this.hide();
         this.$emit("edit");

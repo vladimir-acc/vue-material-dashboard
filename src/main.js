@@ -21,6 +21,8 @@ import MaterialDashboard from "./material-dashboard";
 
 import Chartist from "chartist";
 
+import VueMask from 'v-mask';
+
 // configure router
 const router = new VueRouter({
   routes, // short for routes: routes
@@ -34,6 +36,8 @@ Vue.use(MaterialDashboard);
 Vue.use(GlobalComponents);
 Vue.use(GlobalDirectives);
 Vue.use(Notifications);
+
+Vue.use(VueMask)
 
 /* eslint-disable no-new */
 new Vue({

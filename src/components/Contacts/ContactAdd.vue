@@ -11,7 +11,7 @@
         class="flex"
         :data-background-color="dataBackgroundColor"
       >
-        <h4 class="title">Додати нового користувача</h4>
+        <h4 class="title">Додати адресу</h4>
         <div>
           <md-button
             class="md-just-icon md-simple md-primary"
@@ -31,6 +31,7 @@
               <md-input
                 v-model="title"
                 type="text"
+                required
               >{{ title }}</md-input>
             </md-field>
           </div>
@@ -40,15 +41,19 @@
               <md-input
                 v-model="address"
                 type="text"
+                required
               >{{ address }}</md-input>
             </md-field>
           </div>
           <div class="md-layout-item md-small-size-100 md-size-50">
-            <md-field>
+            <md-field aria-required="true">
               <label>email</label>
               <md-input
                 v-model="email"
-                type="text"
+                type="email"
+                pattern=".+@globex\.com"
+                size="30"
+                required
               >{{ email }}</md-input>
             </md-field>
           </div>
@@ -57,7 +62,12 @@
               <label>phone</label>
               <md-input
                 v-model="phone"
-                type="phone"
+                type="tel"
+                v-mask="'+38 (0##) ### ## ##'"
+                placeholder="+38 (0XX) XXX XX XX"
+                minlength="19"
+                maxlength="19"
+                required
               >{{ phone }}</md-input>
             </md-field>
           </div>
@@ -76,6 +86,7 @@
 
 <script>
 import api from "../../../config/config.js";
+
 export default {
   name: "create-form",
   props: {
@@ -126,7 +137,10 @@ export default {
         email: this.email,
         phone: this.phone,
       };
-
+      if (Object.values(data).some((item) => !item)) {
+        alert("Заповніть обов\`язкові поля");
+        return;
+      }
       const result = await fetch(
         `http://${api.host}:${api.port}/contact/create/`,
         {
@@ -143,7 +157,8 @@ export default {
         .catch((err) => {
           alert(err);
         });
-      if (result.err) alert(result.err);
+
+      if (result.err || result.message) alert(result.err ? result.err : result.message);
       else {
         this.hide();
         this.$emit("create");

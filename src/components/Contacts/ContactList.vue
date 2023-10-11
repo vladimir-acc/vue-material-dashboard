@@ -30,8 +30,8 @@
         <md-table-cell md-label="id">{{ item.id}}</md-table-cell>
         <md-table-cell md-label="Назва">{{ item.title}}</md-table-cell>
         <md-table-cell md-label="Адреса">{{ item.address }}</md-table-cell>
-        <md-table-cell md-label="Телефон">{{ item.email }}</md-table-cell>
-        <md-table-cell md-label="Email">{{ item.phone }}</md-table-cell>
+        <md-table-cell md-label="Телефон">{{ item.phone }}</md-table-cell>
+        <md-table-cell md-label="Email">{{ item.email }}</md-table-cell>
         <md-table-cell
           class="md-size-10"
           md-label="Подія"
@@ -143,5 +143,15 @@ export default {
 }
 .md-custom:hover {
   background-color: #27a7b8 !important;
+}
+input:invalid {
+  border: 2px dashed red;
+}
+
+input:valid {
+  border: 2px solid black;
+}
+*:required {
+  background-color: gold;
 }
 </style>
