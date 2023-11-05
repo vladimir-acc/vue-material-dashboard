@@ -23,6 +23,10 @@ import Chartist from "chartist";
 
 import VueMask from 'v-mask';
 
+// SCSS
+
+import './assets/scss/_form.scss';
+
 // configure router
 const router = new VueRouter({
   routes, // short for routes: routes

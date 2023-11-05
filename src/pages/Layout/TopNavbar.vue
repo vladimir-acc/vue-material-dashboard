@@ -25,8 +25,9 @@
           <div class="md-autocomplete">
             <md-autocomplete
               class="search"
-              v-model="selectedEmployee"
-              :md-options="employees"
+              v-model="selectedUser"
+              :md-options="users"
+              @click="fetchUsers();alert('sdfgdsf')"
             >
               <label>Search...</label>
             </md-autocomplete>
@@ -87,8 +88,8 @@ import api from "../../../config/config.js";
 export default {
   data() {
     return {
-      selectedEmployee: null,
-      employees: [
+      selectedUser: null,
+      users: [
         // "Jim Halpert",
         // "Dwight Schrute",
         // "Michael Scott",
@@ -103,6 +104,21 @@ export default {
   methods: {
     toggleSidebar() {
       this.$sidebar.displaySidebar(!this.$sidebar.showSidebar);
+    },
+    async fetchUsers() {
+      await this.postDataUsers(
+        `http://${api.host}:${api.port}/users/read/`
+      ).then((data) => {
+        for (const id in data) {
+          this.users.push(data[id].login);
+        }
+      });
+    },
+    async postDataUsers(url) {
+      const response = await fetch(url, {
+        method: "POST",
+      });
+      return response.json();
     },
     logout() {
       const id = { userId: 3 };
@@ -126,6 +142,9 @@ export default {
       });
       return response.json();
     },
+  },
+  mounted() {
+    this.fetchUsers();
   },
 };
 </script>

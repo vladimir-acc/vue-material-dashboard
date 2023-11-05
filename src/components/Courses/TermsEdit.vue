@@ -9,9 +9,9 @@
     <md-card class="form-modal">
       <md-card-header
         class="flex"
-        :data-background-color="dataBackgroundColor"
+        data-background-color="blue"
       >
-        <h4 class="title">Додати адресу</h4>
+        <h4 class="title">Редагувати</h4>
         <div>
           <md-button
             class="md-just-icon md-simple md-primary"
@@ -25,56 +25,47 @@
 
       <md-card-content>
         <div class="md-layout">
-          <div class="md-layout-item md-small-size-100 md-size-50">
+          <div class="md-layout-item md-small-size-100 md-size-100">
             <md-field>
-              <label>Title</label>
+              <label>Тривалість</label>
               <md-input
-                v-model="title"
+                v-model="duration"
                 type="text"
-                required
-              >{{ title }}</md-input>
+              >{{ duration }}</md-input>
             </md-field>
           </div>
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
-              <label>address</label>
+              <label>Період</label>
               <md-input
-                v-model="address"
+                v-model="period"
                 type="text"
-                required
-              >{{ address }}</md-input>
-            </md-field>
-          </div>
-          <div class="md-layout-item md-small-size-100 md-size-50">
-            <md-field aria-required="true">
-              <label>email</label>
-              <md-input
-                v-model="email"
-                type="email"
-                pattern=".+@globex\.com"
-                size="30"
-                required
-              >{{ email }}</md-input>
+              >{{ period }}</md-input>
             </md-field>
           </div>
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
-              <label>+38 (0XX) XXX XX XX</label>
+              <label>Вартість</label>
               <md-input
-                v-model="phone"
-                type="tel"
-                v-mask="'+38 (0##) ### ## ##'"
-                minlength="19"
-                maxlength="19"
-                required
-              >{{ phone }}</md-input>
+                v-model="cost"
+                type="text"
+              >{{ cost }}</md-input>
+            </md-field>
+          </div>
+          <div class="md-layout-item md-small-size-100 md-size-100">
+            <md-field>
+              <label>Посилання</label>
+              <md-input
+                v-model="link"
+                type="text"
+              >{{ link }}</md-input>
             </md-field>
           </div>
 
           <div class="md-layout-item md-size-100 text-right">
             <md-button
               class="md-raised md-success"
-              @click="create()"
+              @click="edit()"
             >Зберегти</md-button>
           </div>
         </div>
@@ -85,65 +76,47 @@
 
 <script>
 import api from "../../../config/config.js";
-
 export default {
-  name: "create-form",
+  name: "edit-form",
   props: {
     dataBackgroundColor: {
       type: String,
       default: "",
     },
-    contact: {
-      title: {
-        type: String,
-        default: "",
-      },
-
-      address: {
-        type: String,
-        default: "",
-      },
-      email: {
-        type: String,
-        default: "",
-      },
-      phone: {
-        type: String,
-        default: "",
-      },
-    },
   },
   data() {
     return {
       isVisible: false,
-      title: "",
-      address: "",
-      email: "",
-      phone: "",
+      duration: "",
+      period: "",
+      cost: "",
+      link: "",
     };
   },
   methods: {
-    show() {
+    show(id, duration, period, cost, link) {
+      this.id = id;
+      this.duration = duration;
+      this.period = period;
+      this.cost = cost;
+      this.link = link;
       this.isVisible = true;
     },
     hide() {
       this.isVisible = false;
     },
-    async create() {
+    async edit() {
       const data = {
-        title: this.title,
-        address: this.address,
-        email: this.email,
-        phone: this.phone,
+        id: this.id,
+        duration: this.duration,
+        period: this.period,
+        cost: this.cost,
+        link: this.link,
       };
-      if (Object.values(data).some((item) => !item)) {
-        alert("Заповніть обов\`язкові поля");
-        return;
-      }
       const result = await fetch(
-        `http://${api.host}:${api.port}/contact/create/`,
+        `http://${api.host}:${api.port}/course_terms/update/${this.id}`,
         {
-          method: "POST",
+          method: "PUT",
           body: JSON.stringify(data),
           headers: {
             "Content-Type": "application/json",
@@ -154,24 +127,24 @@ export default {
           return res.json();
         })
         .catch((err) => {
-          alert(err);
+          console.dir(err);
         });
-
-      if (result.err || result.message) {
-        alert(result.err ? result.err : result.message);
-      } else {
+      if (result.err) alert(result.err);
+      else {
         this.hide();
-        this.$emit("create");
-        this.title = "";
-        this.address = "";
-        this.email = "";
-        this.phone = "";
+        this.$emit("termsEdit", this.id);
       }
     },
   },
 };
 </script>
 <style>
+@media (min-width: 315px) and (max-width: 767px) {
+  .form-modal {
+    left: 0 !important;
+    max-width: 100%;
+  }
+}
 .form-modal {
   max-width: 750px;
   left: calc(50vw - 280px);
@@ -179,5 +152,8 @@ export default {
 .flex {
   display: flex;
   justify-content: space-between;
+}
+.md-field label.required {
+  color: #e49393 !important;
 }
 </style>

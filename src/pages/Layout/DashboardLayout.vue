@@ -19,13 +19,19 @@
         <md-icon>person</md-icon>
         <p>Користувачи</p>
       </sidebar-link>
-      <sidebar-link to="/contacts">
-        <md-icon>room</md-icon>
-        <p>Контакти</p>
-      </sidebar-link>
+
       <sidebar-link to="/camp">
         <md-icon>content_paste</md-icon>
         <p>Camp</p>
+      </sidebar-link>
+      <sidebar-link to="/courses">
+        <md-icon>content_paste</md-icon>
+        <p>Курси/Заняття</p>
+      </sidebar-link>
+
+      <sidebar-link to="/contacts">
+        <md-icon>room</md-icon>
+        <p>Контакти</p>
       </sidebar-link>
       <!-- <sidebar-link to="/typography">
         <md-icon>library_books</md-icon>
